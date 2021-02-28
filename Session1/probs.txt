@@ -1,0 +1,89 @@
+prob1:
+	Chef wants to order food from a food delivery app. He wishes to order once today, and buy three items costing A1,A2 and A3 rupees,
+respectively. He'll also order once tomorrow, when he'll buy three items costing B1,B2 and B3 rupees, respectively.
+There is an additional delivery charge of rupees D for each order.
+He notices that there is a coupon on sale, which costs rupees C. 
+If he buys that coupon, the delivery charges on any day, on an order of rupees 150 or more shall be waived (that is, the D rupees will not be added, if the sum of the costs of the items is ≥150).
+Note that Chef is ordering the three items together on each day, so the delivery charge is charged only once each day. 
+Also, note that it's only needed to buy the coupon once to avail the delivery fee waiver on both days.
+Should Chef buy the coupon? Note that Chef shall buy the coupon only if it costs him strictly less than what it costs him without the coupon, 
+in total.
+
+Input:
+The first line of the input contains a single integer T, denoting the number of test cases.
+The first line of each test case contains two space-separated integers D and C, denoting the delivery charge, and the price of the coupon, respectively.
+The second line of each test case contains three space-separated integers A1,A2 and A3, denoting the prices of the food items that Chef plans to order on Day 1, respectively.
+The third line of each test case contains three space-separated integers B1, B2 and B3, denoting the prices of the food items that Chef plans to order on Day 2, respectively.
+Output:
+For each test case, output YES if Chef should buy the coupon, and NO otherwise, in a separate line.
+
+Constraints
+1≤T≤104
+1≤D,C≤100
+1≤A1,A2,A3≤100
+1≤B1,B2,B3≤100
+Sample Input 1:
+2
+90 100
+100 50 10
+80 80 80
+30 30
+100 100 100
+10 20 30
+Sample Output 1:
+YES
+NO
+Explanation:
+Testcase 1: On the first day, Chef plans on ordering three food items, costing a total of rupees (100+50+10)=160. 
+On the second day, Chef plans on ordering three food items, costing a total of rupees (80+80+80)=240.
+If Chef buys the coupon he shall save the delivery charge on both days, but the coupon shall cost him rupees 100 extra.
+In total, it shall cost him (160+240+100)=500.
+Without the coupon, Chef will have to pay the delivery charges for both days, which shall cost him a total of rupees (160+240+90+90)=580.
+Thus, it's better for Chef to buy the coupon.
+Testcase 2: On the first day, Chef plans on ordering three food items, costing a total of rupees (100+100+100)=300. On the second day, Chef plans on ordering three food items, costing a total of rupees (10+20+30)=60.
+If Chef buys the coupon he shall save the delivery charge on only the first day, but the coupon shall cost him rupees 30 extra. In total, it shall cost him (300+60+30 (coupon cost) +30 (delivery cost for second day))=420.
+Without the coupon, Chef will have to pay the delivery charges for both days, which shall cost him a total of rupees (300+60+30 (delivery cost for first day)+30 (delivery cost for second day))=420.
+Since it shall cost him the same amount in both the cases, Chef shall not buy the coupon.
+ 
+prob2:
+	Chef has just started watching Game of Thrones, and he wants to first calculate the exact time (in minutes) that it'll take 
+him to complete the series.
+The series has S seasons, and the ith season has Ei episodes, each of which are Li,1,Li,2,…,Li,Ei minutes long. 
+Note that these Li,j include the duration of the beginning intro song in each episode. The streaming service that he uses, allows Chef to skip the intro song. The intro song changes slightly each season, and so he wants to watch the intro song in the first episode of each season, but he'll skip it in all other episodes of that season (yes, we know, a sacrilege!). You know that the intro song lasts for Qi minutes in the ith season.
+Find the total time in minutes, that he has to watch.
+
+Input:
+First line will contain a single integer, T, denoting the number of testcases. Then the testcases follow.
+The first line of each testcase will contain a single integer S, denoting the total number of seasons.
+The second line contains S space separated integers, Q1,Q2,…,QS, where Qi denotes the duration of the intro song in the ith season.
+The ith of the next S lines contains Ei+1 space separated integers, where the first integer is Ei, denoting the number of episodes in the ith season. That is followed by the duration of each of the Ei episodes, Li,1,Li,2,…,Li,Ei.
+Output:
+For each testcase, output the answer in a single line.
+
+Constraints
+1≤T≤5
+1≤S≤105
+2≤Li,j≤105
+1≤Ei
+Sum of all Ei in a single testcase is at most 105
+1≤Qi<Li,j, for all valid j.
+Sample Input 1:
+1
+2
+1 2
+1 2
+2 3 4
+Sample Output 1:
+7
+Explanation:
+1 in the beginning denotes there is only 1 test case.
+
+Testcase 1:
+
+There are 2 seasons. The intro song in each of the first season episodes lasts for 1 minute, 
+and the intro song in the second season episodes lasts for 2 minutes each.
+For the first season, since there is only 1 episode, Chef will be watching it completely - 2 minutes.
+For the second season, Chef will be watching the first episode completely (3 minutes) and will skip the intro song 
+of the second episode (4−2=2 minutes).
+
+So, the total time spent is 2+(3+(4−2))=7 minutes.
