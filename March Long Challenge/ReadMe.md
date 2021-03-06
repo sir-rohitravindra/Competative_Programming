@@ -5,6 +5,6 @@
 <p>
 Please refer the codechef archives for the questions
 This is my first codechef long challenge </p>
-<b>Current codechef rating : 1536
+<b>Current codechef rating : 1536<br>
 Date of contest: 5th March to 10th March 2021
 </b>
