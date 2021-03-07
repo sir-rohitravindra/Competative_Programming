@@ -16,4 +16,23 @@ for t in range(int(input())):
     print("First" if turn else "Second")
 
 
+"""for t in range(int(input())):
+    n = int(input())
 
+    a = [int(i) for i in input().split()]
+    a.sort()
+
+    sums=0
+    flag=0
+    for i in range(n):
+        if(a[i]>i):
+            print("Second")
+            flag=1
+            break
+        sums+=(i-a[i])
+    if(not(flag)):
+        if sums%2==1 :
+            print("First",flag)
+        else:
+            print("Second",flag)
+"""
