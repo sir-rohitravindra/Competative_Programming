@@ -1,0 +1,66 @@
+#include <iostream>
+#include <bitset>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t;
+    int n,m,k;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n>>m>>k;
+        int arr[n];
+        
+        for(int i=0;i<n;i++)
+        {
+            cin>>arr[i];
+        }
+        int itv[m][3];
+        for(int i=0;i<m;i++)
+        {
+            cin>>itv[i][0]>>itv[i][1]>>itv[i][2];
+        }
+        long int up=(long int)pow(2,n);
+        int scores[up];
+        //const int n0=n;
+        for(int i=0;i<up;i++)
+        {
+            //string binary=bitset<4>(i).to_string;
+            const int n0=const_cast<int&>(n);
+            std::string binary = std::bitset<n0>(i).to_string();
+            
+            int score=0;
+            for(int j=0;j<n;j++)
+            {
+                score+=arr[j]*(binary[j]-'0');
+            }
+            
+            for(int p=0;p<m;p++)
+            {
+                int flag=0;
+                for(int q=itv[p][0]-1;q<itv[p][1];q++)
+                {
+                    if(binary[q]==0)
+                    {
+                        flag=1;
+                    }
+                }
+                score+=itv[p][2]*flag;
+            }
+            
+            scores[i]=score;
+        }
+        
+        sort(scores, scores + up, greater<int>());
+        
+        for(int w=0;w<k;w++)
+        {
+            cout<<scores[w]<<" ";
+        }
+        cout<<"\n";
+    }
+    return 0;
+}

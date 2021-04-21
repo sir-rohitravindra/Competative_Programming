@@ -1,0 +1,86 @@
+#include <stdio.h>
+
+int main()
+{
+    int t,n,m;
+    long int 
+    int ele;
+    int nele;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d %d %d",&n,&m,&k);
+        int arr[n][m];
+        long int sums[n][m];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                scanf("%d",&ele);
+                nele=ele;
+                if(j!=0)
+                {
+                    nele+=sums[i][j-1];
+                }
+                sums[i][j]=nele;
+                
+                arr[i][j]=ele;
+            }
+        }
+        for(int i=1;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                sums[i][j]+=sums[i-1][j];
+            }
+        }
+       
+        int a,b;
+        int count=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(arr[i][j]>=k)
+                {
+                    
+                    count++;
+                    int up=1;
+                    long int sumi=0;
+                    while(i-up>-1 && j-up>-1)
+                    {
+                        a=i-up;
+                        b=j-up;
+                        sumi=sums[i][j];
+                        if(a)
+                        {
+                            sumi-=sums[a-1][j];
+                        }
+                        if(b)
+                        {
+                            sumi-=sums[i][b-1];
+                        }
+                        if(a && b)
+                        {
+                            sumi+=sums[a-1][b-1];
+                        }
+                        if(sumi/((up+1)*(up+1))>=k)
+                        {
+                            count++;
+                            
+                        }
+                        
+                        up++;
+                    }
+                }
+                
+            }
+        }
+        
+        printf("%d\n",count);
+        
+    }
+    
+
+    return 0;
+}

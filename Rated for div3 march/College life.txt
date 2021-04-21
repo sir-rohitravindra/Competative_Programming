@@ -1,0 +1,80 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int t,n,m;
+    int* f,*c;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int switches=0;
+        int turn=0;
+
+        scanf("%d %d",&n,&m);
+        f=(int*)malloc(n*sizeof(int));
+        c=(int*)malloc(m*sizeof(int));
+        //res=(int*)malloc((n+m)*sizeof(int));
+        for(int i=0;i<n;i++)
+        {
+            scanf("%d",&f[i]);
+        }
+        for(int i=0;i<m;i++)
+        {
+            scanf("%d",&c[i]);
+        }
+        int i=0,j=0;
+        while(i<n && j<m)
+        {
+
+            if(f[i]<=c[j])
+            {
+                if(turn)
+                {
+                    turn=0;
+                    switches++;
+                }
+
+                i++;
+
+            }
+            else
+            {
+                if(!turn)
+                {
+                    turn=1;
+                    switches++;
+                }
+                j++;
+            }
+        }
+
+        if(i<n)
+        {
+            if(turn)
+            {
+                switches++;
+            }
+        }
+        else
+        {
+            if(!turn)
+            {
+                switches++;
+            }
+        }
+        free(f);free(c);
+        printf("%d\n",switches);
+
+    }
+
+    return 0;
+}
